@@ -1,0 +1,44 @@
+{
+    "routes": {},
+    "models": {
+        "smollm2": {
+            "type": "chat",
+            "displayName": "smollm2",
+            "endpoint": "http://host.docker.internal:11434/v1/chat/completions"
+        },
+        "hf-qwen": {
+            "type": "chat",
+            "displayName": "hf-qwen",
+            "endpoint": "http://litellm:4000/chat/completions"
+        },
+        "smollm2-ollama": {
+            "type": "chat",
+            "displayName": "smollm2 (ollama)",
+            "endpoint": "http://adapter-openai:5000/openai/deployments/smollm2/chat/completions",
+            "upstreams": [
+                {
+                    "endpoint": "http://host.docker.internal:11434/v1/chat/completions",
+                    "key": "dummy-key"
+                }
+            ]
+        }
+    },
+    "keys": {
+        "dial_api_key": {
+            "project": "TEST-PROJECT",
+            "role": "default"
+        }
+    },
+    "roles": {
+        "default": {
+            "limits": {
+                "smollm2": {},
+                "smollm2-ollama": {},
+                "hf-qwen": {}
+            }
+        }
+    }
+}
+
+
+
