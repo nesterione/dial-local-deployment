@@ -65,7 +65,7 @@ services:
     environment:
       WEB_CONCURRENCY: "3"
       DIAL_URL: "http://core:8080"
-      MODEL_ALIASES: '{"smollm2":"gpt-4"}'
+      MODEL_ALIASES: '{"smollm2":"gpt-4", "llama3.2":"gpt-4o"}'
     networks:
       - dial-network
     extra_hosts:
@@ -83,6 +83,19 @@ services:
       --config /app/config.yaml --detailed_debug
     networks:
       - dial-network
+
+  my-smart-app:
+    build: ./my-smart-app
+    environment:
+      # 'MODEL': "llama3.2"
+      # 'AZURE_ENDPOINT': "http://core:8080"
+      # 'OPENAI_API_KEY': "dial_api_key"
+      'AZURE_ENDPOINT': "https://ai-proxy.lab.epam.com"
+      'MODEL': "gpt-4o-2024-05-13"
+      'OPENAI_API_KEY': ${DIAL_API_KEY}
+    networks:
+      - dial-network
+
 networks:
   dial-network:
     driver: bridge

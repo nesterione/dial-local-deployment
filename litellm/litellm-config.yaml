@@ -1,5 +1,6 @@
 model_list:
   - model_name: hf-qwen
     litellm_params:
-      model: huggingface/Qwen/Qwen2.5-Coder-32B-Instruct
+      #model: huggingface/Qwen/Qwen2.5-Coder-32B-Instruct
+      model: huggingface/Qwen/Qwen2.5-3B-Instruct
       api_key: "os.environ/HUGGINGFACE_API_KEY"

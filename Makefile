@@ -10,3 +10,9 @@ prepare-env:
 	@chmod -R 777 core-data
 	@echo "Environment prepared successfully"
 
+
+clean:
+	@echo "Cleaning up..."
+	@rm -rf core-logs
+	@rm -rf core-data
+	@echo "Cleaned up successfully"
